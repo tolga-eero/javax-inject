@@ -16,7 +16,7 @@
 
 package org.atinject.tck.auto;
 
-import javax.inject.Inject;
+import javax.inject.InjectDagger1;
 
 public abstract class GasEngine extends Engine {
 
@@ -24,7 +24,8 @@ public abstract class GasEngine extends Engine {
         overriddenTwiceWithOmissionInMiddleInjected = true;
     }
 
-    @Inject public void injectTwiceOverriddenWithOmissionInSubclass() {
+    @InjectDagger1
+    public void injectTwiceOverriddenWithOmissionInSubclass() {
         overriddenTwiceWithOmissionInSubclassInjected = true;
     }
 }

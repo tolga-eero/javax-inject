@@ -113,7 +113,7 @@ import static java.lang.annotation.ElementType.FIELD;
  *
  * <h3>Qualifiers</h3>
  *
- * <p>A {@linkplain Qualifier qualifier} may annotate an injectable field
+ * <p>A {@linkplain QualifierDagger1 qualifier} may annotate an injectable field
  * or parameter and, combined with the type, identify the implementation to
  * inject. Qualifiers are optional, and when used with {@code @Inject} in
  * injector-independent classes, no more than one qualifier should annotate a
@@ -168,18 +168,18 @@ import static java.lang.annotation.ElementType.FIELD;
  *
  * <p>A conservative injector might detect the circular dependency at build
  * time and generate an error, at which point the programmer could break the
- * circular dependency by injecting {@link Provider Provider&lt;A>} or {@code
+ * circular dependency by injecting {@link ProviderDagger1 Provider&lt;A>} or {@code
  * Provider<B>} instead of {@code A} or {@code B} respectively. Calling {@link
- * Provider#get() get()} on the provider directly from the constructor or
+ * ProviderDagger1#get() get()} on the provider directly from the constructor or
  * method it was injected into defeats the provider's ability to break up
  * circular dependencies. In the case of method or field injection, scoping
- * one of the dependencies (using {@linkplain Singleton singleton scope}, for
+ * one of the dependencies (using {@linkplain SingletonDagger1 singleton scope}, for
  * example) may also enable a valid circular relationship.
  *
- * @see javax.inject.Qualifier @Qualifier
- * @see javax.inject.Provider
+ * @see QualifierDagger1 @Qualifier
+ * @see ProviderDagger1
  */
 @Target({ METHOD, CONSTRUCTOR, FIELD })
 @Retention(RUNTIME)
 @Documented
-public @interface Inject {}
+public @interface InjectDagger1 {}

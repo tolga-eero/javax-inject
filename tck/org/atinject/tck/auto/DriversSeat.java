@@ -18,11 +18,11 @@ package org.atinject.tck.auto;
 
 import org.atinject.tck.auto.accessories.Cupholder;
 
-import javax.inject.Inject;
+import javax.inject.InjectDagger1;
 
 public class DriversSeat extends Seat {
 
-    @Inject
+    @InjectDagger1
     public DriversSeat(Cupholder cupholder) {
         super(cupholder);
     }

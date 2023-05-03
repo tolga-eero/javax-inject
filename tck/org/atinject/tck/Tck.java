@@ -22,6 +22,8 @@ import org.atinject.tck.auto.Convertible;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import javax.inject.NamedDagger1;
+
 /**
  * Manufactures the compatibility test suite. This TCK relies on
  * <a href="http://junit.org/">JUnit</a>. To integrate the TCK with your
@@ -60,7 +62,7 @@ import junit.framework.TestSuite;
  *       (not subclasses).
  *   <li>{@link org.atinject.tck.auto.Engine Engine} is implemented by
  *       {@link org.atinject.tck.auto.V8Engine V8Engine}.
- *   <li>{@link javax.inject.Named @Named("spare")}
+ *   <li>{@link NamedDagger1 @Named("spare")}
  *       {@link org.atinject.tck.auto.Tire Tire} is implemented by
  *       {@link org.atinject.tck.auto.accessories.SpareTire SpareTire}.
  *   <li>The following classes may also be injected directly:

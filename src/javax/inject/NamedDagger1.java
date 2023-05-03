@@ -16,16 +16,27 @@
 
 package javax.inject;
 
-import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
+import java.lang.annotation.Documented;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Identifies a type that the injector only instantiates once. Not inherited.
+ * String-based {@linkplain QualifierDagger1 qualifier}.
  *
- * @see javax.inject.Scope @Scope
+ * <p>Example usage:
+ *
+ * <pre>
+ *   public class Car {
+ *     &#064;Inject <b>@Named("driver")</b> Seat driverSeat;
+ *     &#064;Inject <b>@Named("passenger")</b> Seat passengerSeat;
+ *     ...
+ *   }</pre>
  */
-@Scope
+@QualifierDagger1
 @Documented
 @Retention(RUNTIME)
-public @interface Singleton {}
+public @interface NamedDagger1 {
+
+    /** The name. */
+    String value() default "";
+}

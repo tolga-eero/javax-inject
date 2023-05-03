@@ -50,9 +50,9 @@ import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
  *     public enum Color { RED, BLACK, TAN }
  *   }</pre>
  *
- * @see javax.inject.Named @Named
+ * @see NamedDagger1 @Named
  */
 @Target(ANNOTATION_TYPE)
 @Retention(RUNTIME)
 @Documented
-public @interface Qualifier {}
+public @interface QualifierDagger1 {}

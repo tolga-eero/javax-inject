@@ -41,7 +41,7 @@ package javax.inject;
  *     }
  *   }</pre>
  */
-public interface Provider<T> {
+public interface ProviderDagger1<T> {
 
     /**
      * Provides a fully-constructed and injected instance of {@code T}.

@@ -18,15 +18,15 @@ package org.atinject.tck.auto;
 
 import org.atinject.tck.auto.accessories.Cupholder;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import javax.inject.InjectDagger1;
+import javax.inject.SingletonDagger1;
 
-@Singleton
+@SingletonDagger1
 public class Seat {
 
     private final Cupholder cupholder;
 
-    @Inject
+    @InjectDagger1
     Seat(Cupholder cupholder) {
         this.cupholder = cupholder;
     }

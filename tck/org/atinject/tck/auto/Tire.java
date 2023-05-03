@@ -19,7 +19,7 @@ package org.atinject.tck.auto;
 import org.atinject.tck.auto.accessories.SpareTire;
 import org.atinject.tck.auto.accessories.RoundThing;
 
-import javax.inject.Inject;
+import javax.inject.InjectDagger1;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -30,9 +30,11 @@ public class Tire extends RoundThing {
     protected static final Set<String> moreProblems = new LinkedHashSet<String>();
 
     FuelTank constructorInjection = NEVER_INJECTED;
-    @Inject FuelTank fieldInjection = NEVER_INJECTED;
+    @InjectDagger1
+    FuelTank fieldInjection = NEVER_INJECTED;
     FuelTank methodInjection = NEVER_INJECTED;
-    @Inject static FuelTank staticFieldInjection = NEVER_INJECTED;
+    @InjectDagger1
+    static FuelTank staticFieldInjection = NEVER_INJECTED;
     static FuelTank staticMethodInjection = NEVER_INJECTED;
 
     boolean constructorInjected;
@@ -64,11 +66,13 @@ public class Tire extends RoundThing {
     public boolean overriddenProtectedMethodInjectedTwice;
     public boolean overriddenPublicMethodInjectedTwice;
 
-    @Inject public Tire(FuelTank constructorInjection) {
+    @InjectDagger1
+    public Tire(FuelTank constructorInjection) {
         this.constructorInjection = constructorInjection;
     }
 
-    @Inject void supertypeMethodInjection(FuelTank methodInjection) {
+    @InjectDagger1
+    void supertypeMethodInjection(FuelTank methodInjection) {
         if (!hasTireBeenFieldInjected()) {
             methodInjectedBeforeFields = true;
         }
@@ -81,7 +85,8 @@ public class Tire extends RoundThing {
         this.methodInjection = methodInjection;
     }
 
-    @Inject static void supertypeStaticMethodInjection(FuelTank methodInjection) {
+    @InjectDagger1
+    static void supertypeStaticMethodInjection(FuelTank methodInjection) {
         if (!Tire.hasBeenStaticFieldInjected()) {
             staticMethodInjectedBeforeStaticFields = true;
         }
@@ -94,47 +99,55 @@ public class Tire extends RoundThing {
         staticMethodInjection = methodInjection;
     }
 
-    @Inject private void injectPrivateMethod() {
+    @InjectDagger1
+    private void injectPrivateMethod() {
         if (superPrivateMethodInjected) {
             similarPrivateMethodInjectedTwice = true;
         }
         superPrivateMethodInjected = true;
     }
 
-    @Inject void injectPackagePrivateMethod() {
+    @InjectDagger1
+    void injectPackagePrivateMethod() {
         if (superPackagePrivateMethodInjected) {
             similarPackagePrivateMethodInjectedTwice = true;
         }
         superPackagePrivateMethodInjected = true;
     }
 
-    @Inject protected void injectProtectedMethod() {
+    @InjectDagger1
+    protected void injectProtectedMethod() {
         if (superProtectedMethodInjected) {
             overriddenProtectedMethodInjectedTwice = true;
         }
         superProtectedMethodInjected = true;
     }
 
-    @Inject public void injectPublicMethod() {
+    @InjectDagger1
+    public void injectPublicMethod() {
         if (superPublicMethodInjected) {
             overriddenPublicMethodInjectedTwice = true;
         }
         superPublicMethodInjected = true;
     }
 
-    @Inject private void injectPrivateMethodForOverride() {
+    @InjectDagger1
+    private void injectPrivateMethodForOverride() {
         subPrivateMethodForOverrideInjected = true;
     }
 
-    @Inject void injectPackagePrivateMethodForOverride() {
+    @InjectDagger1
+    void injectPackagePrivateMethodForOverride() {
         subPackagePrivateMethodForOverrideInjected = true;
     }
 
-    @Inject protected void injectProtectedMethodForOverride() {
+    @InjectDagger1
+    protected void injectProtectedMethodForOverride() {
         protectedMethodForOverrideInjected = true;
     }
 
-    @Inject public void injectPublicMethodForOverride() {
+    @InjectDagger1
+    public void injectPublicMethodForOverride() {
         publicMethodForOverrideInjected = true;
     }
 
@@ -164,13 +177,15 @@ public class Tire extends RoundThing {
 
     boolean packagePrivateMethod2Injected;
 
-    @Inject void injectPackagePrivateMethod2() {
+    @InjectDagger1
+    void injectPackagePrivateMethod2() {
         packagePrivateMethod2Injected = true;
     }
 
     public boolean packagePrivateMethod3Injected;
 
-    @Inject void injectPackagePrivateMethod3() {
+    @InjectDagger1
+    void injectPackagePrivateMethod3() {
         packagePrivateMethod3Injected = true;
     }
 

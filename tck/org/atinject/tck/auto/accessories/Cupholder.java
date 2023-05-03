@@ -18,17 +18,17 @@ package org.atinject.tck.auto.accessories;
 
 import org.atinject.tck.auto.Seat;
 
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.inject.Singleton;
+import javax.inject.InjectDagger1;
+import javax.inject.ProviderDagger1;
+import javax.inject.SingletonDagger1;
 
-@Singleton
+@SingletonDagger1
 public class Cupholder {
 
-    public final Provider<Seat> seatProvider;
+    public final ProviderDagger1<Seat> seatProviderDagger1;
 
-    @Inject
-    public Cupholder(Provider<Seat> seatProvider) {
-        this.seatProvider = seatProvider;
+    @InjectDagger1
+    public Cupholder(ProviderDagger1<Seat> seatProviderDagger1) {
+        this.seatProviderDagger1 = seatProviderDagger1;
     }
 }

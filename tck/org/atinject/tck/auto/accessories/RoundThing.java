@@ -16,25 +16,28 @@
 
 package org.atinject.tck.auto.accessories;
 
-import javax.inject.Inject;
+import javax.inject.InjectDagger1;
 
 public class RoundThing {
 
     public boolean packagePrivateMethod2Injected;
 
-    @Inject void injectPackagePrivateMethod2() {
+    @InjectDagger1
+    void injectPackagePrivateMethod2() {
         packagePrivateMethod2Injected = true;
     }
 
     public boolean packagePrivateMethod3Injected;
 
-    @Inject void injectPackagePrivateMethod3() {
+    @InjectDagger1
+    void injectPackagePrivateMethod3() {
         packagePrivateMethod3Injected = true;
     }
 
     public boolean packagePrivateMethod4Injected;
 
-    @Inject void injectPackagePrivateMethod4() {
+    @InjectDagger1
+    void injectPackagePrivateMethod4() {
         packagePrivateMethod4Injected = true;
     }
 }

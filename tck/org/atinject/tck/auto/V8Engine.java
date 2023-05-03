@@ -18,8 +18,8 @@ package org.atinject.tck.auto;
 
 import org.atinject.tck.auto.accessories.SpareTire;
 
-import javax.inject.Inject;
-import javax.inject.Named;
+import javax.inject.InjectDagger1;
+import javax.inject.NamedDagger1;
 
 public class V8Engine extends GasEngine {
 
@@ -27,7 +27,8 @@ public class V8Engine extends GasEngine {
         publicNoArgsConstructorInjected = true;
     }
 
-    @Inject void injectPackagePrivateMethod() {
+    @InjectDagger1
+    void injectPackagePrivateMethod() {
         if (subPackagePrivateMethodInjected) {
             overriddenPackagePrivateMethodInjectedTwice = true;
         }
@@ -38,7 +39,7 @@ public class V8Engine extends GasEngine {
      * Qualifiers are swapped from how they appear in the superclass.
      */
     public void injectQualifiers(Seat seatA, @Drivers Seat seatB,
-            Tire tireA, @Named("spare") Tire tireB) {
+            Tire tireA, @NamedDagger1("spare") Tire tireB) {
         if ((seatA instanceof DriversSeat)
                 || !(seatB instanceof DriversSeat)
                 || (tireA instanceof SpareTire)
@@ -51,7 +52,8 @@ public class V8Engine extends GasEngine {
         subPackagePrivateMethodForOverrideInjected = true;
     }
 
-    @Inject public void injectTwiceOverriddenWithOmissionInMiddle() {
+    @InjectDagger1
+    public void injectTwiceOverriddenWithOmissionInMiddle() {
         overriddenTwiceWithOmissionInMiddleInjected = true;
     }
 

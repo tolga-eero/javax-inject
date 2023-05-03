@@ -21,17 +21,22 @@ import org.atinject.tck.auto.accessories.Cupholder;
 import org.atinject.tck.auto.accessories.SpareTire;
 import org.atinject.tck.auto.accessories.RoundThing;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Provider;
+import javax.inject.InjectDagger1;
+import javax.inject.NamedDagger1;
+import javax.inject.ProviderDagger1;
 
 public class Convertible implements Car {
 
-    @Inject @Drivers Seat driversSeatA;
-    @Inject @Drivers Seat driversSeatB;
-    @Inject SpareTire spareTire;
-    @Inject Cupholder cupholder;
-    @Inject Provider<Engine> engineProvider;
+    @InjectDagger1
+    @Drivers Seat driversSeatA;
+    @InjectDagger1
+    @Drivers Seat driversSeatB;
+    @InjectDagger1
+    SpareTire spareTire;
+    @InjectDagger1
+    Cupholder cupholder;
+    @InjectDagger1
+    ProviderDagger1<Engine> engineProviderDagger1;
 
     private boolean methodWithZeroParamsInjected;
     private boolean methodWithMultipleParamsInjected;
@@ -41,64 +46,83 @@ public class Convertible implements Car {
     private Seat constructorDriversSeat;
     private Tire constructorPlainTire;
     private Tire constructorSpareTire;
-    private Provider<Seat> constructorPlainSeatProvider = nullProvider();
-    private Provider<Seat> constructorDriversSeatProvider = nullProvider();
-    private Provider<Tire> constructorPlainTireProvider = nullProvider();
-    private Provider<Tire> constructorSpareTireProvider = nullProvider();
+    private ProviderDagger1<Seat> constructorPlainSeatProviderDagger1 = nullProvider();
+    private ProviderDagger1<Seat> constructorDriversSeatProviderDagger1 = nullProvider();
+    private ProviderDagger1<Tire> constructorPlainTireProviderDagger1 = nullProvider();
+    private ProviderDagger1<Tire> constructorSpareTireProviderDagger1 = nullProvider();
 
-    @Inject Seat fieldPlainSeat;
-    @Inject @Drivers Seat fieldDriversSeat;
-    @Inject Tire fieldPlainTire;
-    @Inject @Named("spare") Tire fieldSpareTire;
-    @Inject Provider<Seat> fieldPlainSeatProvider = nullProvider();
-    @Inject @Drivers Provider<Seat> fieldDriversSeatProvider = nullProvider();
-    @Inject Provider<Tire> fieldPlainTireProvider = nullProvider();
-    @Inject @Named("spare") Provider<Tire> fieldSpareTireProvider = nullProvider();
+    @InjectDagger1
+    Seat fieldPlainSeat;
+    @InjectDagger1
+    @Drivers Seat fieldDriversSeat;
+    @InjectDagger1
+    Tire fieldPlainTire;
+    @InjectDagger1
+    @NamedDagger1("spare") Tire fieldSpareTire;
+    @InjectDagger1
+    ProviderDagger1<Seat> fieldPlainSeatProviderDagger1 = nullProvider();
+    @InjectDagger1
+    @Drivers
+    ProviderDagger1<Seat> fieldDriversSeatProviderDagger1 = nullProvider();
+    @InjectDagger1
+    ProviderDagger1<Tire> fieldPlainTireProviderDagger1 = nullProvider();
+    @InjectDagger1
+    @NamedDagger1("spare")
+    ProviderDagger1<Tire> fieldSpareTireProviderDagger1 = nullProvider();
 
     private Seat methodPlainSeat;
     private Seat methodDriversSeat;
     private Tire methodPlainTire;
     private Tire methodSpareTire;
-    private Provider<Seat> methodPlainSeatProvider = nullProvider();
-    private Provider<Seat> methodDriversSeatProvider = nullProvider();
-    private Provider<Tire> methodPlainTireProvider = nullProvider();
-    private Provider<Tire> methodSpareTireProvider = nullProvider();
+    private ProviderDagger1<Seat> methodPlainSeatProviderDagger1 = nullProvider();
+    private ProviderDagger1<Seat> methodDriversSeatProviderDagger1 = nullProvider();
+    private ProviderDagger1<Tire> methodPlainTireProviderDagger1 = nullProvider();
+    private ProviderDagger1<Tire> methodSpareTireProviderDagger1 = nullProvider();
 
-    @Inject static Seat staticFieldPlainSeat;
-    @Inject @Drivers static Seat staticFieldDriversSeat;
-    @Inject static Tire staticFieldPlainTire;
-    @Inject @Named("spare") static Tire staticFieldSpareTire;
-    @Inject static Provider<Seat> staticFieldPlainSeatProvider = nullProvider();
-    @Inject @Drivers static Provider<Seat> staticFieldDriversSeatProvider = nullProvider();
-    @Inject static Provider<Tire> staticFieldPlainTireProvider = nullProvider();
-    @Inject @Named("spare") static Provider<Tire> staticFieldSpareTireProvider = nullProvider();
+    @InjectDagger1
+    static Seat staticFieldPlainSeat;
+    @InjectDagger1
+    @Drivers static Seat staticFieldDriversSeat;
+    @InjectDagger1
+    static Tire staticFieldPlainTire;
+    @InjectDagger1
+    @NamedDagger1("spare") static Tire staticFieldSpareTire;
+    @InjectDagger1
+    static ProviderDagger1<Seat> staticFieldPlainSeatProviderDagger1 = nullProvider();
+    @InjectDagger1
+    @Drivers static ProviderDagger1<Seat> staticFieldDriversSeatProviderDagger1 = nullProvider();
+    @InjectDagger1
+    static ProviderDagger1<Tire> staticFieldPlainTireProviderDagger1 = nullProvider();
+    @InjectDagger1
+    @NamedDagger1("spare") static ProviderDagger1<Tire> staticFieldSpareTireProviderDagger1 = nullProvider();
 
     private static Seat staticMethodPlainSeat;
     private static Seat staticMethodDriversSeat;
     private static Tire staticMethodPlainTire;
     private static Tire staticMethodSpareTire;
-    private static Provider<Seat> staticMethodPlainSeatProvider = nullProvider();
-    private static Provider<Seat> staticMethodDriversSeatProvider = nullProvider();
-    private static Provider<Tire> staticMethodPlainTireProvider = nullProvider();
-    private static Provider<Tire> staticMethodSpareTireProvider = nullProvider();
+    private static ProviderDagger1<Seat> staticMethodPlainSeatProviderDagger1 = nullProvider();
+    private static ProviderDagger1<Seat> staticMethodDriversSeatProviderDagger1 = nullProvider();
+    private static ProviderDagger1<Tire> staticMethodPlainTireProviderDagger1 = nullProvider();
+    private static ProviderDagger1<Tire> staticMethodSpareTireProviderDagger1 = nullProvider();
 
-    @Inject Convertible(
+    @InjectDagger1
+    Convertible(
             Seat plainSeat,
             @Drivers Seat driversSeat,
             Tire plainTire,
-            @Named("spare") Tire spareTire,
-            Provider<Seat> plainSeatProvider,
-            @Drivers Provider<Seat> driversSeatProvider,
-            Provider<Tire> plainTireProvider,
-            @Named("spare") Provider<Tire> spareTireProvider) {
+            @NamedDagger1("spare") Tire spareTire,
+            ProviderDagger1<Seat> plainSeatProviderDagger1,
+            @Drivers ProviderDagger1<Seat> driversSeatProviderDagger1,
+            ProviderDagger1<Tire> plainTireProviderDagger1,
+            @NamedDagger1("spare") ProviderDagger1<Tire> spareTireProviderDagger1) {
         constructorPlainSeat = plainSeat;
         constructorDriversSeat = driversSeat;
         constructorPlainTire = plainTire;
         constructorSpareTire = spareTire;
-        constructorPlainSeatProvider = plainSeatProvider;
-        constructorDriversSeatProvider = driversSeatProvider;
-        constructorPlainTireProvider = plainTireProvider;
-        constructorSpareTireProvider = spareTireProvider;
+        constructorPlainSeatProviderDagger1 = plainSeatProviderDagger1;
+        constructorDriversSeatProviderDagger1 = driversSeatProviderDagger1;
+        constructorPlainTireProviderDagger1 = plainTireProviderDagger1;
+        constructorSpareTireProviderDagger1 = spareTireProviderDagger1;
     }
 
     Convertible() {
@@ -109,61 +133,65 @@ public class Convertible implements Car {
         throw new AssertionError("Unexpected call to non-injectable method");
     }
 
-    @Inject void injectMethodWithZeroArgs() {
+    @InjectDagger1
+    void injectMethodWithZeroArgs() {
         methodWithZeroParamsInjected = true;
     }
 
-    @Inject String injectMethodWithNonVoidReturn() {
+    @InjectDagger1
+    String injectMethodWithNonVoidReturn() {
         methodWithNonVoidReturnInjected = true;
         return "unused";
     }
 
-    @Inject void injectInstanceMethodWithManyArgs(
+    @InjectDagger1
+    void injectInstanceMethodWithManyArgs(
             Seat plainSeat,
             @Drivers Seat driversSeat,
             Tire plainTire,
-            @Named("spare") Tire spareTire,
-            Provider<Seat> plainSeatProvider,
-            @Drivers Provider<Seat> driversSeatProvider,
-            Provider<Tire> plainTireProvider,
-            @Named("spare") Provider<Tire> spareTireProvider) {
+            @NamedDagger1("spare") Tire spareTire,
+            ProviderDagger1<Seat> plainSeatProviderDagger1,
+            @Drivers ProviderDagger1<Seat> driversSeatProviderDagger1,
+            ProviderDagger1<Tire> plainTireProviderDagger1,
+            @NamedDagger1("spare") ProviderDagger1<Tire> spareTireProviderDagger1) {
         methodWithMultipleParamsInjected = true;
 
         methodPlainSeat = plainSeat;
         methodDriversSeat = driversSeat;
         methodPlainTire = plainTire;
         methodSpareTire = spareTire;
-        methodPlainSeatProvider = plainSeatProvider;
-        methodDriversSeatProvider = driversSeatProvider;
-        methodPlainTireProvider = plainTireProvider;
-        methodSpareTireProvider = spareTireProvider;
+        methodPlainSeatProviderDagger1 = plainSeatProviderDagger1;
+        methodDriversSeatProviderDagger1 = driversSeatProviderDagger1;
+        methodPlainTireProviderDagger1 = plainTireProviderDagger1;
+        methodSpareTireProviderDagger1 = spareTireProviderDagger1;
     }
 
-    @Inject static void injectStaticMethodWithManyArgs(
+    @InjectDagger1
+    static void injectStaticMethodWithManyArgs(
             Seat plainSeat,
             @Drivers Seat driversSeat,
             Tire plainTire,
-            @Named("spare") Tire spareTire,
-            Provider<Seat> plainSeatProvider,
-            @Drivers Provider<Seat> driversSeatProvider,
-            Provider<Tire> plainTireProvider,
-            @Named("spare") Provider<Tire> spareTireProvider) {
+            @NamedDagger1("spare") Tire spareTire,
+            ProviderDagger1<Seat> plainSeatProviderDagger1,
+            @Drivers ProviderDagger1<Seat> driversSeatProviderDagger1,
+            ProviderDagger1<Tire> plainTireProviderDagger1,
+            @NamedDagger1("spare") ProviderDagger1<Tire> spareTireProviderDagger1) {
         staticMethodPlainSeat = plainSeat;
         staticMethodDriversSeat = driversSeat;
         staticMethodPlainTire = plainTire;
         staticMethodSpareTire = spareTire;
-        staticMethodPlainSeatProvider = plainSeatProvider;
-        staticMethodDriversSeatProvider = driversSeatProvider;
-        staticMethodPlainTireProvider = plainTireProvider;
-        staticMethodSpareTireProvider = spareTireProvider;
+        staticMethodPlainSeatProviderDagger1 = plainSeatProviderDagger1;
+        staticMethodDriversSeatProviderDagger1 = driversSeatProviderDagger1;
+        staticMethodPlainTireProviderDagger1 = plainTireProviderDagger1;
+        staticMethodSpareTireProviderDagger1 = spareTireProviderDagger1;
     }
 
     /**
      * Returns a provider that always returns null. This is used as a default
      * value to avoid null checks for omitted provider injections.
      */
-    private static <T> Provider<T> nullProvider() {
-        return new Provider<T>() {
+    private static <T> ProviderDagger1<T> nullProvider() {
+        return new ProviderDagger1<T>() {
             public T get() {
                 return null;
             }
@@ -179,7 +207,7 @@ public class Convertible implements Car {
         private final Cupholder cupholder = car.cupholder;
         private final SpareTire spareTire = car.spareTire;
         private final Tire plainTire = car.fieldPlainTire;
-        private final Engine engine = car.engineProvider.get();
+        private final Engine engine = car.engineProviderDagger1.get();
 
         // smoke tests: if these fail all bets are off
 
@@ -272,35 +300,35 @@ public class Convertible implements Car {
 
         public void testConstructorInjectionWithProviders() {
             assertFalse("Expected unqualified value",
-                    car.constructorPlainSeatProvider.get() instanceof DriversSeat);
+                    car.constructorPlainSeatProviderDagger1.get() instanceof DriversSeat);
             assertFalse("Expected unqualified value",
-                    car.constructorPlainTireProvider.get() instanceof SpareTire);
+                    car.constructorPlainTireProviderDagger1.get() instanceof SpareTire);
             assertTrue("Expected qualified value",
-                    car.constructorDriversSeatProvider.get() instanceof DriversSeat);
+                    car.constructorDriversSeatProviderDagger1.get() instanceof DriversSeat);
             assertTrue("Expected qualified value",
-                    car.constructorSpareTireProvider.get() instanceof SpareTire);
+                    car.constructorSpareTireProviderDagger1.get() instanceof SpareTire);
         }
 
         public void testFieldInjectionWithProviders() {
             assertFalse("Expected unqualified value",
-                    car.fieldPlainSeatProvider.get() instanceof DriversSeat);
+                    car.fieldPlainSeatProviderDagger1.get() instanceof DriversSeat);
             assertFalse("Expected unqualified value",
-                    car.fieldPlainTireProvider.get() instanceof SpareTire);
+                    car.fieldPlainTireProviderDagger1.get() instanceof SpareTire);
             assertTrue("Expected qualified value",
-                    car.fieldDriversSeatProvider.get() instanceof DriversSeat);
+                    car.fieldDriversSeatProviderDagger1.get() instanceof DriversSeat);
             assertTrue("Expected qualified value",
-                    car.fieldSpareTireProvider.get() instanceof SpareTire);
+                    car.fieldSpareTireProviderDagger1.get() instanceof SpareTire);
         }
 
         public void testMethodInjectionWithProviders() {
             assertFalse("Expected unqualified value",
-                    car.methodPlainSeatProvider.get() instanceof DriversSeat);
+                    car.methodPlainSeatProviderDagger1.get() instanceof DriversSeat);
             assertFalse("Expected unqualified value",
-                    car.methodPlainTireProvider.get() instanceof SpareTire);
+                    car.methodPlainTireProviderDagger1.get() instanceof SpareTire);
             assertTrue("Expected qualified value",
-                    car.methodDriversSeatProvider.get() instanceof DriversSeat);
+                    car.methodDriversSeatProviderDagger1.get() instanceof DriversSeat);
             assertTrue("Expected qualified value",
-                    car.methodSpareTireProvider.get() instanceof SpareTire);
+                    car.methodSpareTireProviderDagger1.get() instanceof SpareTire);
         }
 
 
@@ -308,22 +336,22 @@ public class Convertible implements Car {
 
         public void testConstructorInjectedProviderYieldsSingleton() {
             assertSame("Expected same value",
-                    car.constructorPlainSeatProvider.get(), car.constructorPlainSeatProvider.get());
+                    car.constructorPlainSeatProviderDagger1.get(), car.constructorPlainSeatProviderDagger1.get());
         }
 
         public void testFieldInjectedProviderYieldsSingleton() {
             assertSame("Expected same value",
-                    car.fieldPlainSeatProvider.get(), car.fieldPlainSeatProvider.get());
+                    car.fieldPlainSeatProviderDagger1.get(), car.fieldPlainSeatProviderDagger1.get());
         }
 
         public void testMethodInjectedProviderYieldsSingleton() {
             assertSame("Expected same value",
-                    car.methodPlainSeatProvider.get(), car.methodPlainSeatProvider.get());
+                    car.methodPlainSeatProviderDagger1.get(), car.methodPlainSeatProviderDagger1.get());
         }
 
         public void testCircularlyDependentSingletons() {
             // uses provider.get() to get around circular deps
-            assertSame(cupholder.seatProvider.get().getCupholder(), cupholder);
+            assertSame(cupholder.seatProviderDagger1.get().getCupholder(), cupholder);
         }
 
 
@@ -335,29 +363,29 @@ public class Convertible implements Car {
 
         public void testConstructorInjectedProviderYieldsDistinctValues() {
             assertNotSame("Expected distinct values",
-                    car.constructorDriversSeatProvider.get(), car.constructorDriversSeatProvider.get());
+                    car.constructorDriversSeatProviderDagger1.get(), car.constructorDriversSeatProviderDagger1.get());
             assertNotSame("Expected distinct values",
-                    car.constructorPlainTireProvider.get(), car.constructorPlainTireProvider.get());
+                    car.constructorPlainTireProviderDagger1.get(), car.constructorPlainTireProviderDagger1.get());
             assertNotSame("Expected distinct values",
-                    car.constructorSpareTireProvider.get(), car.constructorSpareTireProvider.get());
+                    car.constructorSpareTireProviderDagger1.get(), car.constructorSpareTireProviderDagger1.get());
         }
 
         public void testFieldInjectedProviderYieldsDistinctValues() {
             assertNotSame("Expected distinct values",
-                    car.fieldDriversSeatProvider.get(), car.fieldDriversSeatProvider.get());
+                    car.fieldDriversSeatProviderDagger1.get(), car.fieldDriversSeatProviderDagger1.get());
             assertNotSame("Expected distinct values",
-                    car.fieldPlainTireProvider.get(), car.fieldPlainTireProvider.get());
+                    car.fieldPlainTireProviderDagger1.get(), car.fieldPlainTireProviderDagger1.get());
             assertNotSame("Expected distinct values",
-                    car.fieldSpareTireProvider.get(), car.fieldSpareTireProvider.get());
+                    car.fieldSpareTireProviderDagger1.get(), car.fieldSpareTireProviderDagger1.get());
         }
 
         public void testMethodInjectedProviderYieldsDistinctValues() {
             assertNotSame("Expected distinct values",
-                    car.methodDriversSeatProvider.get(), car.methodDriversSeatProvider.get());
+                    car.methodDriversSeatProviderDagger1.get(), car.methodDriversSeatProviderDagger1.get());
             assertNotSame("Expected distinct values",
-                    car.methodPlainTireProvider.get(), car.methodPlainTireProvider.get());
+                    car.methodPlainTireProviderDagger1.get(), car.methodPlainTireProviderDagger1.get());
             assertNotSame("Expected distinct values",
-                    car.methodSpareTireProvider.get(), car.methodSpareTireProvider.get());
+                    car.methodSpareTireProviderDagger1.get(), car.methodSpareTireProviderDagger1.get());
         }
 
 
@@ -525,31 +553,31 @@ public class Convertible implements Car {
 
         public void testStaticFieldInjectionWithProviders() {
             assertFalse("Expected unqualified value",
-                    staticFieldPlainSeatProvider.get() instanceof DriversSeat);
+                    staticFieldPlainSeatProviderDagger1.get() instanceof DriversSeat);
             assertFalse("Expected unqualified value",
-                    staticFieldPlainTireProvider.get() instanceof SpareTire);
+                    staticFieldPlainTireProviderDagger1.get() instanceof SpareTire);
             assertTrue("Expected qualified value",
-                    staticFieldDriversSeatProvider.get() instanceof DriversSeat);
+                    staticFieldDriversSeatProviderDagger1.get() instanceof DriversSeat);
             assertTrue("Expected qualified value",
-                    staticFieldSpareTireProvider.get() instanceof SpareTire);
+                    staticFieldSpareTireProviderDagger1.get() instanceof SpareTire);
         }
 
         public void testStaticMethodInjectionWithProviders() {
             assertFalse("Expected unqualified value",
-                    staticMethodPlainSeatProvider.get() instanceof DriversSeat);
+                    staticMethodPlainSeatProviderDagger1.get() instanceof DriversSeat);
             assertFalse("Expected unqualified value",
-                    staticMethodPlainTireProvider.get() instanceof SpareTire);
+                    staticMethodPlainTireProviderDagger1.get() instanceof SpareTire);
             assertTrue("Expected qualified value",
-                    staticMethodDriversSeatProvider.get() instanceof DriversSeat);
+                    staticMethodDriversSeatProviderDagger1.get() instanceof DriversSeat);
             assertTrue("Expected qualified value",
-                    staticMethodSpareTireProvider.get() instanceof SpareTire);
+                    staticMethodSpareTireProviderDagger1.get() instanceof SpareTire);
         }
     }
 
     public static class PrivateTests extends TestCase {
 
         private final Convertible car = localConvertible.get();
-        private final Engine engine = car.engineProvider.get();
+        private final Engine engine = car.engineProviderDagger1.get();
         private final SpareTire spareTire = car.spareTire;
 
         public void testSupertypePrivateMethodInjected() {

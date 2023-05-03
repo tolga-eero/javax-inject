@@ -19,57 +19,66 @@ package org.atinject.tck.auto.accessories;
 import org.atinject.tck.auto.FuelTank;
 import org.atinject.tck.auto.Tire;
 
-import javax.inject.Inject;
+import javax.inject.InjectDagger1;
 
 public class SpareTire extends Tire {
 
     FuelTank constructorInjection = NEVER_INJECTED;
-    @Inject FuelTank fieldInjection = NEVER_INJECTED;
+    @InjectDagger1
+    FuelTank fieldInjection = NEVER_INJECTED;
     FuelTank methodInjection = NEVER_INJECTED;
-    @Inject static FuelTank staticFieldInjection = NEVER_INJECTED;
+    @InjectDagger1
+    static FuelTank staticFieldInjection = NEVER_INJECTED;
     static FuelTank staticMethodInjection = NEVER_INJECTED;
 
-    @Inject public SpareTire(FuelTank forSupertype, FuelTank forSubtype) {
+    @InjectDagger1
+    public SpareTire(FuelTank forSupertype, FuelTank forSubtype) {
         super(forSupertype);
         this.constructorInjection = forSubtype;
     }
 
-    @Inject void subtypeMethodInjection(FuelTank methodInjection) {
+    @InjectDagger1
+    void subtypeMethodInjection(FuelTank methodInjection) {
         if (!hasSpareTireBeenFieldInjected()) {
             methodInjectedBeforeFields = true;
         }
         this.methodInjection = methodInjection;
     }
 
-    @Inject static void subtypeStaticMethodInjection(FuelTank methodInjection) {
+    @InjectDagger1
+    static void subtypeStaticMethodInjection(FuelTank methodInjection) {
         if (!hasBeenStaticFieldInjected()) {
             staticMethodInjectedBeforeStaticFields = true;
         }
         staticMethodInjection = methodInjection;
     }
 
-    @Inject private void injectPrivateMethod() {
+    @InjectDagger1
+    private void injectPrivateMethod() {
         if (subPrivateMethodInjected) {
             similarPrivateMethodInjectedTwice = true;
         }
         subPrivateMethodInjected = true;
     }
 
-    @Inject void injectPackagePrivateMethod() {
+    @InjectDagger1
+    void injectPackagePrivateMethod() {
         if (subPackagePrivateMethodInjected) {
             similarPackagePrivateMethodInjectedTwice = true;
         }
         subPackagePrivateMethodInjected = true;
     }
 
-    @Inject protected void injectProtectedMethod() {
+    @InjectDagger1
+    protected void injectProtectedMethod() {
         if (subProtectedMethodInjected) {
             overriddenProtectedMethodInjectedTwice = true;
         }
         subProtectedMethodInjected = true;
     }
 
-    @Inject public void injectPublicMethod() {
+    @InjectDagger1
+    public void injectPublicMethod() {
         if (subPublicMethodInjected) {
             overriddenPublicMethodInjectedTwice = true;
         }
@@ -110,7 +119,8 @@ public class SpareTire extends Tire {
 
     public boolean packagePrivateMethod2Injected;
 
-    @Inject void injectPackagePrivateMethod2() {
+    @InjectDagger1
+    void injectPackagePrivateMethod2() {
         packagePrivateMethod2Injected = true;
     }
 
